@@ -14,7 +14,7 @@
       font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
     }
     *{box-sizing:border-box}
-    html,body{height:100%;margin:0;background:linear-gradient(180deg,#071226 0%, #071126 60%);font-size:16px}
+    html,body{height:100%;margin:0;background-size:cover;background-position:center;background-repeat:no-repeat;background-color:#071126;font-size:16px}
     .wrap{min-height:100%;display:flex;align-items:center;justify-content:center;padding:32px}
     .card{width:100%;max-width:520px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.03));border-radius:calc(var(--radius) + 4px);padding:28px;box-shadow:0 6px 30px rgba(2,6,23,0.6);backdrop-filter: blur(6px)}
 
@@ -32,12 +32,14 @@
     .link span{font-weight:600}
     .sub{font-size:12px;color:var(--muted);margin-left:auto}
 
-    .footer{display:flex;gap:10px;align-items:center;justify-content:space-between;margin-top:18px}
+    .footer{display:flex;gap:10px;align-items:center;justify-content:space-between;margin-top:18px;flex-wrap:wrap}
     .small{font-size:12px;color:var(--muted)}
-    .actions{display:flex;gap:8px}
+    .actions{display:flex;gap:8px;flex-wrap:wrap}
     .btn{padding:8px 10px;border-radius:10px;background:transparent;border:1px solid rgba(255,255,255,0.04);cursor:pointer;color:var(--muted);font-size:13px}
 
-    /* responsive */
+    #qrModal{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.8);display:none;align-items:center;justify-content:center;z-index:9999}
+    #qrModal img{background:#fff;padding:10px;border-radius:12px;width:240px;height:240px}
+
     @media (max-width:420px){.card{padding:18px}.avatar{width:68px;height:68px;border-radius:14px}.who h1{font-size:18px}}
   </style>
 </head>
@@ -55,18 +57,17 @@
       <p class="bio" id="bio">歡迎來到我的連結頁 — 在這裡你可以找到我的社群、作品與聯絡方式。</p>
 
       <nav class="links" aria-label="社交連結">
-        <a class="link" href="https://twitter.com/" target="_blank" rel="noopener noreferrer">
+        <a class="link" href="https://instagram.com/" target="_blank" rel="noopener noreferrer">
           <div class="ico" aria-hidden>
-            <!-- Twitter SVG -->
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M20 7.5c-.6.3-1.3.5-2 .6.7-.4 1.2-1.1 1.4-1.9-.6.4-1.4.6-2.2.8-1.3-1.4-3.5-1.4-4.8 0-1 1.1-1 2.8-.2 4C8.6 11.8 6.1 10.7 4.6 9c-.9 1.5-.3 3.5 1.2 4.4-.5 0-1-.1-1.4-.4 0 1.6 1.1 3 2.6 3.3-.5.1-1 .2-1.6.2-.4 0-.7 0-1-.1 1 2.8 3.6 4.7 6.6 4.8-2.4 1.9-5.3 3-8.4 3-.5 0-1 .1-1.5.1C3.3 22.1 7.1 23 11 23c7 0 10.8-5.9 10.8-11v-.5c.7-.6 1.2-1.4 1.6-2.2-.6.3-1.4.5-2.4.6z" fill="currentColor"/></svg>
+            <!-- Instagram SVG -->
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7 2C4.2 2 2 4.2 2 7v10c0 2.8 2.2 5 5 5h10c2.8 0 5-2.2 5-5V7c0-2.8-2.2-5-5-5H7zm10 2c1.7 0 3 1.3 3 3v10c0 1.7-1.3 3-3 3H7c-1.7 0-3-1.3-3-3V7c0-1.7 1.3-3 3-3h10zm-5 3.3a5.7 5.7 0 1 0 0 11.4 5.7 5.7 0 0 0 0-11.4zm0 9.4a3.7 3.7 0 1 1 0-7.4 3.7 3.7 0 0 1 0 7.4zM17.5 6a1 1 0 1 0 0 2 1 1 0 0 0 0-2z" fill="currentColor"/></svg>
           </div>
-          <span>Twitter</span>
-          <span class="sub">最新動態</span>
+          <span>Instagram</span>
+          <span class="sub">生活與作品</span>
         </a>
 
         <a class="link" href="https://github.com/" target="_blank" rel="noopener noreferrer">
           <div class="ico" aria-hidden>
-            <!-- GitHub SVG -->
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 .5C5.7.5.9 5.3.9 11.6c0 4.7 3 8.7 7.2 10.1.5.1.7-.2.7-.5v-1.8c-2.9.6-3.6-1.1-3.6-1.1-.4-1-1-1.3-1-1.3-.8-.6.1-.6.1-.6.9.1 1.4.9 1.4.9.8 1.4 2.1 1 2.6.8.1-.6.3-1 .6-1.3-2.3-.3-4.7-1.2-4.7-5.4 0-1.2.4-2.1 1.1-2.9-.1-.3-.5-1.5.1-3.1 0 0 .9-.3 3 .9.9-.3 1.9-.5 2.9-.5s2 .2 2.9.5c2.1-1.2 3-.9 3-.9.6 1.6.2 2.8.1 3.1.7.8 1.1 1.7 1.1 2.9 0 4.2-2.4 5.1-4.7 5.4.4.4.7 1 .7 2v3c0 .3.2.6.7.5 4.2-1.4 7.2-5.4 7.2-10.1C23 5.3 18.3.5 12 .5z" fill="currentColor"/></svg>
           </div>
           <span>GitHub</span>
@@ -75,7 +76,6 @@
 
         <a class="link" href="mailto:someone@example.com">
           <div class="ico" aria-hidden>
-            <!-- Mail SVG -->
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M20 4H4a2 2 0 00-2 2v12a2 2 0 002 2h16a2 2 0 002-2V6a2 2 0 00-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" fill="currentColor"/></svg>
           </div>
           <span>Email</span>
@@ -84,13 +84,11 @@
 
         <a class="link" href="/resume.pdf" target="_blank" rel="noopener noreferrer">
           <div class="ico" aria-hidden>
-            <!-- CV SVG -->
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8zM14 2v6h6" fill="currentColor"/></svg>
           </div>
           <span>Resume / CV</span>
           <span class="sub">下載 PDF</span>
         </a>
-
       </nav>
 
       <div class="footer">
@@ -98,35 +96,36 @@
         <div class="actions">
           <button class="btn" id="copyBtn">複製頁面連結</button>
           <button class="btn" id="themeBtn">切換主題</button>
+          <button class="btn" id="bgBtn">設定背景圖片</button>
+          <button class="btn" id="qrBtn">顯示 QR Code</button>
+          <button class="btn" id="langBtn">EN/中文</button>
         </div>
       </div>
     </main>
   </div>
 
+  <div id="qrModal"><img id="qrImg" src="" alt="QR Code"></div>
+
   <script>
-    // basic interactivity: copy url and theme toggle
     const copyBtn = document.getElementById('copyBtn');
     copyBtn.addEventListener('click', async ()=>{
       try{
         await navigator.clipboard.writeText(window.location.href);
         copyBtn.textContent = '已複製！';
         setTimeout(()=> copyBtn.textContent = '複製頁面連結', 1600);
-      }catch(e){
-        alert('複製失敗，請手動複製網址');
-      }
+      }catch(e){alert('複製失敗，請手動複製網址');}
     });
 
     const themeBtn = document.getElementById('themeBtn');
     themeBtn.addEventListener('click', ()=>{
       const root = document.documentElement;
       if(root.style.getPropertyValue('--bg') === '#0f1724'){
-        // switch to light-ish
         root.style.setProperty('--bg','#f6f7fb');
         root.style.setProperty('--card','#ffffff');
         root.style.setProperty('--muted','#64748b');
         root.style.setProperty('--accent','#7c3aed');
         root.style.setProperty('--glass','rgba(0,0,0,0.02)');
-        document.body.style.background = 'linear-gradient(180deg,#f8fafc 0%, #eef2ff 60%)';
+        document.body.style.backgroundColor = '#f8fafc';
         document.documentElement.style.colorScheme = 'light';
       }else{
         root.style.setProperty('--bg','#0f1724');
@@ -134,20 +133,49 @@
         root.style.setProperty('--muted','#9aa4b2');
         root.style.setProperty('--accent','#7c3aed');
         root.style.setProperty('--glass','rgba(255,255,255,0.03)');
-        document.body.style.background = 'linear-gradient(180deg,#071226 0%, #071126 60%)';
+        document.body.style.backgroundColor = '#071126';
         document.documentElement.style.colorScheme = 'dark';
       }
     });
 
-    // small dynamic: set initials from name
+    const bgBtn = document.getElementById('bgBtn');
+    bgBtn.addEventListener('click', ()=>{
+      const url = prompt('請輸入背景圖片網址：');
+      if(url){document.body.style.backgroundImage = `url(${url})`;}
+    });
+
+    const qrBtn = document.getElementById('qrBtn');
+    const qrModal = document.getElementById('qrModal');
+    const qrImg = document.getElementById('qrImg');
+    qrBtn.addEventListener('click', ()=>{
+      const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=240x240&data=${encodeURIComponent(window.location.href)}`;
+      qrImg.src = qrUrl;
+      qrModal.style.display = 'flex';
+    });
+    qrModal.addEventListener('click', ()=> qrModal.style.display='none');
+
+    const langBtn = document.getElementById('langBtn');
+    let lang = 'zh';
+    langBtn.addEventListener('click', ()=>{
+      if(lang==='zh'){
+        document.getElementById('display-name').textContent = 'Tony Marquez';
+        document.getElementById('bio').textContent = 'Welcome to my link page — find my works and contact info here.';
+        langBtn.textContent = '中文';
+        lang='en';
+      }else{
+        document.getElementById('display-name').textContent = '你的名字';
+        document.getElementById('bio').textContent = '歡迎來到我的連結頁 — 在這裡你可以找到我的社群、作品與聯絡方式。';
+        langBtn.textContent = 'EN/中文';
+        lang='zh';
+      }
+    });
+
     const avatar = document.getElementById('avatar');
     const nameEl = document.getElementById('display-name');
     const handleEl = document.getElementById('handle');
-    // if you want to prefill, edit below
     const NAME = 'Tony Marquez';
     const HANDLE = '@tony';
     const BIO = '工程師、創作者。這裡放置我的作品與聯絡資訊。';
-
     if(NAME){
       nameEl.textContent = NAME;
       avatar.textContent = NAME.split(' ').map(s=>s[0]).slice(0,2).join('').toUpperCase();
